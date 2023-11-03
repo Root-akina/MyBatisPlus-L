@@ -50,23 +50,35 @@ public class testBatis {
     }
 
     @Test
-    public void fun05(){
+    public void fun05() {
         LambdaQueryWrapper<User> lambda = new LambdaQueryWrapper<>();
-        lambda.gt(User::getId,7).or().gt(User::getAge,20);
+        lambda.gt(User::getId, 7).or().gt(User::getAge, 20);
         List<User> users = userMapper.selectList(lambda);
     }
 
     @Test
-    public void fun06(){
-        Integer minAge=10;  //将来有用户传递进来,此处简化成直接定义变量了
-        Integer maxAge=null;  //将来有用户传递进来,此处简化成直接定义变量了
+    public void fun06() {
+        Integer minAge = 10;  //将来有用户传递进来,此处简化成直接定义变量了
+        Integer maxAge = null;  //将来有用户传递进来,此处简化成直接定义变量了
         LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<User>();
-        if(minAge!=null){
+        if (minAge != null) {
             lqw.gt(User::getAge, minAge);
         }
-        if(maxAge!=null){
+        if (maxAge != null) {
             lqw.lt(User::getAge, maxAge);
         }
+        List<User> userList = userMapper.selectList(lqw);
+        System.out.println(userList);
+    }
+
+    @Test
+    public void fun07() {
+        Integer minAge = 10;  //将来有用户传递进来,此处简化成直接定义变量了
+        Integer maxAge = null;  //将来有用户传递进来,此处简化成直接定义变量了
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<User>();
+//参数1：如果表达式为true，那么查询才使用该条件
+        lqw.gt(minAge != null, User::getAge, minAge)
+                .lt(maxAge != null, User::getAge, maxAge);
         List<User> userList = userMapper.selectList(lqw);
         System.out.println(userList);
     }
