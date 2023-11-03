@@ -48,4 +48,11 @@ public class testBatis {
         List<User> userList = userMapper.selectList(lqw);
         System.out.println(userList);
     }
+
+    @Test
+    public void fun05(){
+        LambdaQueryWrapper<User> lambda = new LambdaQueryWrapper<>();
+        lambda.gt(User::getId,7).or().gt(User::getAge,20);
+        List<User> users = userMapper.selectList(lambda);
+    }
 }
