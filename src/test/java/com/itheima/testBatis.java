@@ -30,6 +30,12 @@ public class testBatis {
         lambda.gt(User::getAge,20)
                 .likeRight(User::getName,"张");
         List<User> users = userMapper.selectList(lambda);
+    }
 
+    @Test
+    public void fun03(){
+        LambdaQueryWrapper<User> lqw = new LambdaQueryWrapper<>();
+        lqw.gt(User::getAge,10).orderByDesc(User::getId);
+        List<User> users = userMapper.selectList(lqw);
     }
 }
