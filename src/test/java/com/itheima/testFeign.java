@@ -16,4 +16,8 @@ public class testFeign {
         HttpRequest build = HttpRequest.newBuilder().GET().build();
         build.headers();
     }
+    @Test
+    public void study(){
+        System.out.println("day_10_1");
+    }
 }
