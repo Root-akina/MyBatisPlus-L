@@ -21,5 +21,6 @@ public class testFeign {
         System.out.println("day_10_1");
         System.out.println("life is one big symphony");
         System.out.println("life is one big symphony");
+        System.out.println("life is one big symphony");
     }
 }
