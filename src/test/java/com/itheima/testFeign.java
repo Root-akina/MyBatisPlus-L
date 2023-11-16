@@ -19,5 +19,6 @@ public class testFeign {
     @Test
     public void study(){
         System.out.println("day_10_1");
+        System.out.println("life is one big symphony");
     }
 }
